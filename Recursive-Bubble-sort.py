@@ -18,10 +18,11 @@ def bubbleSort(A, n):
 
 #Main Body
 start = time.time()
-n = int(input("Enter the no. of array elements"))
+n = int(input("Enter the no. of array elements: "))
 A = random.sample(range(1, 999), n)
+print("Given array is: ", A)
 bubbleSort(A, len(A))
 # print the sorted list
-print(A)
+print("Shorted Array is: ",A)
 end = time.time()
 print("Time taken: ", end - start)
