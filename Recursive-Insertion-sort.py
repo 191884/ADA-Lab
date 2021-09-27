@@ -23,11 +23,12 @@ def insertionSort(A, i, n):
 #Main Body
 sys.setrecursionlimit(3001)
 start = time.time()
-n = int(input("Enter the no. of array elements"))
-A = random.sample(range(1, 999), n)
+n = int(input("Enter the no. of array elements: "))
+A = random.sample(range(1, 3001), n)
+print("Array is : ", A)
 # start from the second element (the element at index 0 is already sorted)
 insertionSort(A, 1, len(A) - 1)
 # print the sorted list
-print(A)
+print("Sorted array i : ",A)
 end = time.time()
 print("Time taken: ", end - start)
