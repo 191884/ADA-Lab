@@ -1,6 +1,7 @@
 # Recursive function to perform insertion sort on sublist `A[i…n]`
 import time
 import random
+import sys
 def insertionSort(A, i, n):
 	value = A[i]
 	j = i
@@ -20,6 +21,7 @@ def insertionSort(A, i, n):
 		insertionSort(A, i + 1, n)
 
 #Main Body
+sys.setrecursionlimit(3001)
 start = time.time()
 n = int(input("Enter the no. of array elements"))
 A = random.sample(range(1, 999), n)
