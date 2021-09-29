@@ -1,1 +1,143 @@
+For full Implement using Recursion method and plot of runtime for 100, 500, 1000, 1500, 2000, 2500, 3000 random integers is given in link: 
 https://docs.google.com/document/d/1ir2RiX6ZaAW6cVNqONEphB8mjOIfG9ui1eFqCGcK_Ro/edit?usp=sharing
+
+
+
+
+Bubble sort Algoritham:
+
+import time
+import random
+def swap(A, i, j):
+	temp = A[i]
+	A[i] = A[j]
+	A[j] = temp
+
+
+# Recursive function to perform bubble sort on sublist `A[i…n]`
+def bubbleSort(A, n):
+	for i in range(n - 1):
+		if A[i] > A[i + 1]:
+			swap(A, i, i + 1)
+
+	if n - 1 > 1:
+		bubbleSort(A, n - 1)
+
+
+#Main Body
+start = time.time()
+n = int(input("Enter the no. of array elements: "))
+A = random.sample(range(1, 999), n)
+print("Given array is: ", A)
+bubbleSort(A, len(A))
+# print the sorted list
+print("Shorted Array is: ",A)
+end = time.time()
+print("Time taken: ", end - start)
+
+
+Insertion Sort Algoritham:
+
+
+import time
+import random
+import sys
+def insertionSort(A, i, n):
+	value = A[i]
+	j = i
+
+	# find index `j` within the sorted subset `A[0…i-1]`
+	# where element `A[i]` belongs
+	while j > 0 and A[j - 1] > value:
+		A[j] = A[j - 1]
+		j = j - 1
+
+	A[j] = value
+
+	# Note that sublist `A[j…i-1]`is shifted to
+	# the right by one position, i.e., `A[j+1…i]`
+
+	if i + 1 <= n:
+		insertionSort(A, i + 1, n)
+
+#Main Body
+sys.setrecursionlimit(3001)
+start = time.time()
+n = int(input("Enter the no. of array elements: "))
+A = random.sample(range(1, 3001), n)
+print("Array is : ", A)
+# start from the second element (the element at index 0 is already sorted)
+insertionSort(A, 1, len(A) - 1)
+# print the sorted list
+print("Sorted array i : ",A)
+end = time.time()
+print("Time taken: ", end - start)
+
+
+Merge sort Algoritham:
+
+import random
+import time
+
+def mergeSort(arr):
+	if len(arr) > 1:
+
+		# Finding the mid of the array
+		mid = len(arr)//2
+
+		# Dividing the array elements
+		L = arr[:mid]
+
+		# into 2 halves
+		R = arr[mid:]
+
+		# Sorting the first half
+		mergeSort(L)
+
+		# Sorting the second half
+		mergeSort(R)
+
+		i = j = k = 0
+
+		# Copy data to temp arrays L[] and R[]
+		while i < len(L) and j < len(R):
+			if L[i] < R[j]:
+				arr[k] = L[i]
+				i += 1
+			else:
+				arr[k] = R[j]
+				j += 1
+			k += 1
+
+		# Checking if any element was left
+		while i < len(L):
+			arr[k] = L[i]
+			i += 1
+			k += 1
+
+		while j < len(R):
+			arr[k] = R[j]
+			j += 1
+			k += 1
+
+# Code to print the list
+
+
+def printList(arr):
+	for i in range(len(arr)):
+		print(arr[i], end=" ")
+	print()
+
+
+# Driver Code
+start = time.time()
+n = int(input("Enter the no. of array elements"))
+arr = random.sample(range(1,999),n)
+#arr = [12, 11, 13, 5, 6, 7]
+print("Given array is :")
+printList(arr)
+mergeSort(arr)
+print("Sorted array is: ")
+printList(arr)
+end = time.time()
+print("Time taken: ", end - start)
